@@ -1,7 +1,7 @@
-package at.fh.sve.ue04.ms.config;
+package at.fh.sve.config;
 
-import at.fh.sve.ue04.ms.provider.CorsResponseFilter;
-import at.fh.sve.ue04.ms.rest.ParkingResource;
+import at.fh.sve.provider.CorsResponseFilter;
+import at.fh.sve.rest.ParkingResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

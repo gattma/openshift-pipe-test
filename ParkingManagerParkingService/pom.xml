@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>at.fh.sve.ue04.ms</groupId>
-    <artifactId>ParkingManager-Parking-Service</artifactId>
+    <artifactId>ParkingManagerParkingService</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -18,6 +18,10 @@
 
         <version.swagger.jaxrs>1.5.21</version.swagger.jaxrs>
         <version.swagger.annotations>1.5.21</version.swagger.annotations>
+
+        <version.hibernate.ogm>5.0.0.Final</version.hibernate.ogm>
+        <version.mongodb.driver>3.8.0</version.mongodb.driver>
+        <version.reflections>0.9.11</version.reflections>
 
         <fabric8.maven.plugin.version>4.0.0</fabric8.maven.plugin.version>
     </properties>
@@ -67,6 +71,35 @@
         <dependency>
             <groupId>io.thorntail</groupId>
             <artifactId>jaxrs</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>microprofile-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${version.reflections}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxb-provider</artifactId>
+            <version>3.0.16.Final</version>
+        </dependency>
+
+        <!-- DB -->
+        <dependency>
+            <groupId>org.hibernate.ogm</groupId>
+            <artifactId>hibernate-ogm-mongodb</artifactId>
+            <version>${version.hibernate.ogm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${version.mongodb.driver}</version>
         </dependency>
 
         <!-- tracing -->
