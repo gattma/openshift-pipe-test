@@ -1,6 +1,10 @@
-package at.fh.sve.ue04.ms.domain;
+package at.fh.sve.domain;
 
-public class Address {
+import javax.persistence.Entity;
+import java.util.StringJoiner;
+
+@Entity
+public class Address extends BaseEntity {
 
     private Long postalCode;
     private String city;
@@ -40,4 +44,12 @@ public class Address {
         this.street = street;
     }
 
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Address.class.getSimpleName() + "[", "]")
+                .add("postalCode=" + postalCode)
+                .add("city='" + city + "'")
+                .add("street='" + street + "'")
+                .toString();
+    }
 }

@@ -1,4 +1,4 @@
-package at.fh.sve.ue04.ms.domain;
+package at.fh.sve.domain;
 
 public class ParkingSpace {
 

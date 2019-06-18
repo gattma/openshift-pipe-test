@@ -1,4 +1,4 @@
-package at.fh.sve.ue04.ms.config;
+package at.fh.sve.config;
 
 import io.swagger.annotations.SwaggerDefinition;
 import io.swagger.jaxrs.Reader;
