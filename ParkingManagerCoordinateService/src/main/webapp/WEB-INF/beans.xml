@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
     bean-discovery-mode="all">
-    <alternatives>
-        <class>at.fh.sve.ue4.ms.dao.ParkingDAOMockImpl</class>
-    </alternatives>
+    <!--<alternatives>-->
+        <!--<class>at.fh.sve.ue4.ms.dao.ParkingDAOMockImpl</class>-->
+    <!--</alternatives>-->
 </beans>
