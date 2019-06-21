@@ -13,7 +13,7 @@ service = AnalyzerService()
 @app.route('/analyze')
 def analyzeUrl():
     url = __extractUrl()
-    car_boxes = service.analyze(url, app)
+    car_boxes = service.analyze(url)
     
     parkingplace = {}
     parkingplace["webcamUrl"] = url

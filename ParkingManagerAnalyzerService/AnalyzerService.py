@@ -11,7 +11,7 @@ class AnalyzerService:
         
     # --------- PRIVATE HELPER --------------
     def __takePicture(self, url):
-        image = self.image_client.getImageFromWebcam(url, app)
+        image = self.image_client.getImageFromWebcam(url)
         return image
 
     def __analyzeImage(self, image):
