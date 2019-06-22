@@ -1,0 +1,1 @@
+mongoimport --db parkingDB --collection BaseEntity --type json --file /parking.json
