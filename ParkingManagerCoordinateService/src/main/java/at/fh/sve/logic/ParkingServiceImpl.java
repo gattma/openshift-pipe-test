@@ -32,15 +32,18 @@ public class ParkingServiceImpl implements ParkingService {
 
     @Override
     public AnalyzedParkingPlace getBestParkingPlaceFor(String city, Double longitude, Double latitude) {
+        LOG.info("AnalyzedParkingPlace getBestParkingPlaceFor(String city, Double longitude, Double latitude)");
         List<ParkingPlace> parkingPlaces = parkingDAO.get().findAllFor(city);
         parkingPlaces.forEach(pp -> LOG.info(pp.toString()));
 
         boolean finished = false;
         AnalyzedParkingPlace result = null;
         while(!finished) {
+            LOG.info("ParkingPlace nearest = findNearest(parkingPlaces, longitude, latitude);");
             ParkingPlace nearest = findNearest(parkingPlaces, longitude, latitude);
             parkingPlaces.remove(nearest);
 
+            LOG.info("result = getActualStatus(nearest.getWebcamUrl());");
             result = getActualStatus(nearest.getWebcamUrl());
 
             List<ParkingSpaceCoordinate> freePlaces = difference(nearest.getParkingSpaces(), result.getParkingSpaces());
