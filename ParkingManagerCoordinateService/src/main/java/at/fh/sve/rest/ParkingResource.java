@@ -41,9 +41,9 @@ public class ParkingResource {
 
 
     @GET
-    @Path("/parkingplace/{city}")
+    @Path("/parkingplace")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBestParkingPlaceFor(@PathParam("city") String city) {
-        return Response.ok(parkingService.getBestParkingPlaceFor(city)).build();
+    public Response getBestParkingPlaceFor(@QueryParam("city") String city, @QueryParam("longitude") Double longitude, @QueryParam("latitude") Double latitude) {
+        return Response.ok(parkingService.getBestParkingPlaceFor(city, longitude, latitude)).build();
     }
 }
