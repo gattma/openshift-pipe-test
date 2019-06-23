@@ -6,6 +6,6 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
     bean-discovery-mode="all">
     <alternatives>
-        <class>at.fh.sve.ue4.ms.dao.ParkingDAOMockImpl</class>
+        <class>at.fh.sve.dao.ParkingDAOMockImpl</class>
     </alternatives>
 </beans>

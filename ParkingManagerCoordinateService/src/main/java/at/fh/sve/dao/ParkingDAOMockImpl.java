@@ -1,6 +1,8 @@
-package at.fh.sve.ue4.ms.dao;
+package at.fh.sve.dao;
 
-import at.fh.sve.ue4.ms.domain.Coordinates;
+import at.fh.sve.domain.ParkingPlace;
+import at.fh.sve.domain.Coordinates;
+import org.hibernate.cfg.NotYetImplementedException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
@@ -22,5 +24,10 @@ public class ParkingDAOMockImpl implements ParkingDAO {
     @Override
     public void create(Coordinates coordinates) {
         coordinatesList.add(coordinates);
+    }
+
+    @Override
+    public List<ParkingPlace> findAllFor(String city) {
+        throw new NotYetImplementedException();
     }
 }

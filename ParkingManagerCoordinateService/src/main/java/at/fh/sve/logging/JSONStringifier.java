@@ -1,4 +1,4 @@
-package at.fh.sve.ue4.ms.logging;
+package at.fh.sve.logging;
 
 import java.io.IOException;
 

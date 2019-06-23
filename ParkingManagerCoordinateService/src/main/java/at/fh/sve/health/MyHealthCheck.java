@@ -1,4 +1,4 @@
-package at.fh.sve.ue4.ms.health;
+package at.fh.sve.health;
 
 import org.eclipse.microprofile.health.Health;
 import org.eclipse.microprofile.health.HealthCheck;

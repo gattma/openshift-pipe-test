@@ -1,43 +1,30 @@
-package at.fh.sve.ue4.ms.logic;
+package at.fh.sve.logic;
 
-import at.fh.sve.ue4.ms.dao.ParkingDAO;
-import at.fh.sve.ue4.ms.domain.Coordinates;
-import at.fh.sve.ue4.ms.logging.JSONStringifier;
-import com.mongodb.util.JSON;
-import io.jaegertracing.utils.Http;
-import org.apache.http.HttpException;
+import at.fh.sve.dao.ParkingDAO;
+import at.fh.sve.domain.ParkingPlace;
+import at.fh.sve.domain.Coordinates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
-import javax.json.Json;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestScoped
 public class ParkingServiceImpl implements ParkingService {
 
     private static final String ENDPOINT = "ENDPOINT"; // TODO specify python endpoint
-    private static final Logger LOG = LoggerFactory.getLogger(ParkingServiceImpl.class);
+
+    @Inject
+    private Logger LOG;
 
     @Inject
     private Instance<ParkingDAO> parkingDAO;
-
-    @Override
-    public void addCoordinates(Coordinates coordinates) {
-        // FIXME not needed??
-        // FRONTEND doesn't
-        postCall("addCoordinates", coordinates, Coordinates.class);
-
-        parkingDAO.get().create(coordinates);
-    }
 
     @Override
     public List<Coordinates> readCoordinate(String city) {
@@ -47,6 +34,14 @@ public class ParkingServiceImpl implements ParkingService {
         //TODO Compare with db
 
         return parkingDAO.get().findByCity(city);
+    }
+
+    @Override
+    public ParkingPlace getBestParkingPlaceFor(String city) {
+        List<ParkingPlace> parkingPlaces = parkingDAO.get().findAllFor(city);
+        parkingPlaces.forEach(pp -> LOG.info(pp.toString()));
+
+        return parkingPlaces.get(0);
     }
 
     private <T> T getCall(String path, String parametersString, Class<T> resultClass){
@@ -66,18 +61,6 @@ public class ParkingServiceImpl implements ParkingService {
         return getEntity(response, client, resultClass);
     }
 
-    private <T> T postCall(String path, Object body, Class<T> resultClass){
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(ENDPOINT + path);
-        LOG.info("POST to PythonService: " + ENDPOINT + path + " with body " + JSONStringifier.stringify(body));
-        Response response = target.request().post(Entity.json(body));
-        if(response.getStatus() != Response.Status.OK.getStatusCode()){
-            client.close();
-            return null; // TODO throw Exception or similar Error handling
-        }
-        return getEntity(response, client, resultClass);
-
-    }
 
     private <T> T getEntity(Response response, Client client, Class<T> resultClass){
         if(response.hasEntity()){

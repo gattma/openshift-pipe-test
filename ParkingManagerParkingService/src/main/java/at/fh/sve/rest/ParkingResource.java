@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/parking")
 @Api("parkingManager")
-@Traced
+// @Traced FIXME kann nicht starten wenn jeager nicht da ist
 public class ParkingResource {
 
     @Inject

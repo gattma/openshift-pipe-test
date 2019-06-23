@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.thorntail>2.2.0.Final</version.thorntail>
+        <version.thorntail>2.2.1.Final</version.thorntail>
         <version.arquillian>1.2.1.Final</version.arquillian>
         <version.junit>4.12</version.junit>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -19,7 +19,7 @@
         <version.swagger.jaxrs>1.5.21</version.swagger.jaxrs>
         <version.swagger.annotations>1.5.21</version.swagger.annotations>
 
-        <version.hibernate.ogm>5.0.0.Final</version.hibernate.ogm>
+        <version.hibernate.ogm>5.1.0.Final</version.hibernate.ogm>
         <version.mongodb.driver>3.8.0</version.mongodb.driver>
         <version.reflections>0.9.11</version.reflections>
 
@@ -165,6 +165,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://thorntail.io/posts/thorntail-runner/ -->
+        <dependency>
+            <groupId>io.thorntail</groupId>
+            <artifactId>thorntail-runner</artifactId>
+            <version>${version.thorntail}</version>
+        </dependency>
     </dependencies>
 
     <build>

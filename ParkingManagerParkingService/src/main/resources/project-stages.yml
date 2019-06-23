@@ -5,8 +5,8 @@ swarm:
     path: "/"
   jaeger:
       service-name: ParkingManager-Parking-Service
-      agent-host: jaeger-agent
-      agent-port: 5775
+      agent-host: localhost
+      agent-port: 6832
       reporter-log-spans: true
       reporter-flush-interval: 100
       sampler-type: const

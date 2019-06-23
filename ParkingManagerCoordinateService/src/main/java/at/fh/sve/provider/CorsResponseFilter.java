@@ -1,4 +1,4 @@
-package at.fh.sve.ue4.ms.provider;
+package at.fh.sve.provider;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;

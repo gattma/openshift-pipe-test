@@ -1,4 +1,4 @@
-package at.fh.sve.ue4.ms.domain;
+package at.fh.sve.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
