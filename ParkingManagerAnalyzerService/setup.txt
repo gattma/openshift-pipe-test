@@ -1,0 +1,21 @@
+oc login https://10.0.75.2:8443 --token=7wYIP5CgX1hMNusR4lgUukm8_SX9mBtCe7wWe9tL8GI
+
+
+https://docker-registry-default.10.0.75.2.nip.io/my-project/analyzer-image
+
+
+
+
+
+docker build -t analyzer-image .
+
+
+oc login -u system:admin
+oc adm policy add-cluster-role-to-user cluster-admin gattma
+oc login 
+
+docker login -u gattma -p 7wYIP5CgX1hMNusR4lgUukm8_SX9mBtCe7wWe9tL8GI https://docker-registry-default.10.0.75.2.nip.io/
+oc create is ai -n myproject
+
+ docker tag analyzer-image docker-registry-default.10.0.75.2.nip.io/myproject/ai
+ docker push docker-registry-default.10.0.75.2.nip.io/myproject/ai

@@ -53,7 +53,6 @@ public class EntityManagerProducer {
 
     @Produces
     public EntityManager createEntityManager() {
-        List<String> entities = scanForEntities();
         PersistenceUnitInfo pInfo = new MongoPersistenceUnitInfo(Constants.DB.PERSISTENCE_UNIT, scanForEntities(), props);
         EntityManagerFactory emf = new HibernateOgmPersistence().createContainerEntityManagerFactory(pInfo, new HashMap<>());
         return emf.createEntityManager();
