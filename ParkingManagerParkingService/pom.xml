@@ -180,12 +180,17 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>target</outputDirectory>
+              		<warName>ROOT</warName>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>io.thorntail</groupId>
                 <artifactId>thorntail-maven-plugin</artifactId>
                 <version>${version.thorntail}</version>
+                <configuration>
+                    <finalName>ROOT-thorntail</finalName>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
