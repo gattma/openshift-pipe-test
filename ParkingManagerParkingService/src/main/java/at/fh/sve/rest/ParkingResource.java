@@ -26,6 +26,12 @@ public class ParkingResource {
     @Inject
     private Logger LOG;
 
+    @GET
+    @Path("health")
+    public Response health() {
+        return Response.ok("OK").build();
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
