@@ -55,6 +55,7 @@ public class ParkingServiceImpl implements ParkingService {
         return result;
     }
 
+    @Inject
     @ConfigProperty(name = "ANALYZER_BASE_URL", defaultValue = "http://mdb.parking-manager.svc/analyze")
     private String ANALYZER_BASE_URL;
 
