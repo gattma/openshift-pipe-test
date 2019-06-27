@@ -9,7 +9,5 @@ import java.util.List;
 
 public interface ParkingService {
 
-    List<Coordinates> readCoordinate(String city);
-
     AnalyzedParkingPlace getBestParkingPlaceFor(String city, Double longitude, Double latitude);
 }
