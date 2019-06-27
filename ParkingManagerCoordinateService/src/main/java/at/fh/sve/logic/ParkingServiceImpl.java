@@ -56,7 +56,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Inject
-    @ConfigProperty(name = "ANALYZER_BASE_URL", defaultValue = "http://ai.parking-manager.svc:5000/analyze")
+    @ConfigProperty(name = "ANALYZER_BASE_URL", defaultValue = "http://ai.parking-manager.svc/analyze")
     private String ANALYZER_BASE_URL;
 
     private AnalyzedParkingPlace getActualStatus(String webcamUrl) {
