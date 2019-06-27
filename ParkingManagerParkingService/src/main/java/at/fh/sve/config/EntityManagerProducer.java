@@ -48,8 +48,6 @@ public class EntityManagerProducer {
             put(MongoDBProperties.HOST, DB_HOST);
             put(MongoDBProperties.PORT, DB_PORT);
             put(MongoDBProperties.CREATE_DATABASE, "true");
-            put(MongoDBProperties.USERNAME, "admin");
-            put(MongoDBProperties.PASSWORD, "sve");
         }};
     }
 
