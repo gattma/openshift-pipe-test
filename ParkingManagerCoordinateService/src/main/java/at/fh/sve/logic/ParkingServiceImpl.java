@@ -22,8 +22,6 @@ import java.util.List;
 @RequestScoped
 public class ParkingServiceImpl implements ParkingService {
 
-    private static final String ENDPOINT = "ENDPOINT"; // TODO specify python endpoint
-
     @Inject
     private Logger LOG;
 
@@ -57,7 +55,7 @@ public class ParkingServiceImpl implements ParkingService {
         return result;
     }
 
-    @ConfigProperty(name = "ANALYZER_BASE_URL", defaultValue = "http://ai-myproject.10.0.75.2.nip.io/analyze")
+    @ConfigProperty(name = "ANALYZER_BASE_URL", defaultValue = "http://mdb.parking-manager.svc/analyze")
     private String ANALYZER_BASE_URL;
 
     private AnalyzedParkingPlace getActualStatus(String webcamUrl) {
@@ -120,47 +118,6 @@ public class ParkingServiceImpl implements ParkingService {
 
     private boolean equalInRange(int x1, int x2, int y1, int y2, int range) {
         return (x1 + range >= x2 && x1 - range <= x2) && (y1 + range >= y2 && y1 - range <= y2);
-    }
-
-    // TODO delete ? -------------------------------------
-
-    @Override
-    public List<Coordinates> readCoordinate(String city) {
-        String params = "city=" + city;
-        getCall("readCoordinates", params, Coordinates[].class);
-
-        //TODO Compare with db
-
-        return parkingDAO.get().findByCity(city);
-    }
-
-    private <T> T getCall(String path, String parametersString, Class<T> resultClass){
-        Client client = ClientBuilder.newClient();
-        String params = "";
-        if(parametersString != null && !parametersString.isEmpty()){
-            params = "?" + parametersString;
-        }
-        WebTarget target = client.target(ENDPOINT + path + params);
-        LOG.info("GET to PythonService: " + ENDPOINT + path + params );
-        Response response = target.request().get();
-        if(response.getStatus() != Response.Status.OK.getStatusCode()){
-
-            client.close();
-            return null; // TODO throw Exception or similar Error handling
-        }
-        return getEntity(response, client, resultClass);
-    }
-
-
-    private <T> T getEntity(Response response, Client client, Class<T> resultClass){
-        if(response.hasEntity()){
-            T entity = response.readEntity(resultClass);
-            client.close();
-            return entity;
-        } else {
-            client.close();
-            return null;
-        }
     }
 
 }

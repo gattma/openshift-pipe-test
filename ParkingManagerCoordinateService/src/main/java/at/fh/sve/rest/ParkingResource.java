@@ -22,6 +22,12 @@ public class ParkingResource {
     private ParkingService parkingService;
 
     @GET
+    @Path("health")
+    public Response health() {
+        return Response.ok("OK").build();
+    }
+
+    @GET
     @Path("coordinates/{city}")
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value = "returns the coordinates for a specific city", response = Response.class, produces = MediaType.APPLICATION_JSON)
@@ -38,7 +44,6 @@ public class ParkingResource {
     public Response getCoordinateForCity(@PathParam("city") String city){
         return Response.ok(parkingService.readCoordinate(city)).build();
     }
-
 
     @GET
     @Path("/parkingplace")
