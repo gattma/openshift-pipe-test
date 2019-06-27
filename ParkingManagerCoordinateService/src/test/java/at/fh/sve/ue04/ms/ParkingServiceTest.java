@@ -22,13 +22,6 @@ public class ParkingServiceTest {
     @Inject
     private ParkingService parkingService;
 
-    @Test
-    public void test_readCoordinate() {
-        List<Coordinates> coordinates = parkingService.readCoordinate("Hagenberg");
-
-        Assert.assertNotNull(coordinates);
-        Assert.assertEquals("Hagenberg", coordinates.get(0).getCity());
-    }
 
     @Deployment
     public static WebArchive createDeployment() {
