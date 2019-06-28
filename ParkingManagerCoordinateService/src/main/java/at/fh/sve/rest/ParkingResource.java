@@ -30,6 +30,17 @@ public class ParkingResource {
     @GET
     @Path("/parkingplace")
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "returns the coordinates for a specific city", response = Response.class, produces = MediaType.APPLICATION_JSON)
+    @Counted(unit = MetricUnits.NONE,
+            name = "getCoordinateForCity_Counter",
+            absolute = true,
+            monotonic = true,
+            displayName = "getCoordinateForCity_Counter",
+            description = "Monitor how many times 'getCoordinateForCity' was called!")
+    @Timed(name = "getCoordinateForCity_Timer",
+            description = "Monitor the time 'getCoordinateForCity'-Method takes",
+            unit = MetricUnits.MILLISECONDS,
+            absolute = true)
     public Response getBestParkingPlaceFor(@QueryParam("city") String city, @QueryParam("longitude") Double longitude, @QueryParam("latitude") Double latitude) {
         return Response.ok(parkingService.getBestParkingPlaceFor(city, longitude, latitude)).build();
     }
