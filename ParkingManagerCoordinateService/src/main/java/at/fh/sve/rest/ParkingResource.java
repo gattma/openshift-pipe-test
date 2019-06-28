@@ -24,7 +24,7 @@ public class ParkingResource {
     @GET
     @Path("health")
     public Response health() {
-        return Response.ok("OK").build();
+        return Response.ok("SVE").build();
     }
 
     @GET
