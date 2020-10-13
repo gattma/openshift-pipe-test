@@ -12,7 +12,7 @@
     <properties>
         <version.thorntail>2.2.1.Final</version.thorntail>
         <version.arquillian>1.2.1.Final</version.arquillian>
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
